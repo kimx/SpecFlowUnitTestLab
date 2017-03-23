@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using TechTalk.SpecFlow;
-
+using FluentAssertions;
 namespace SpecFlowUnitTestLab
 {
     [Binding]
@@ -32,7 +32,8 @@ namespace SpecFlowUnitTestLab
         public void Then應為(string result)
         {
             var fullName = ScenarioContext.Current.Get<string>("fullName");
-            Assert.AreEqual(fullName, result);
+            fullName.Should().Be(result);
+            
         }
 
     }

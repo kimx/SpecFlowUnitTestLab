@@ -4,7 +4,7 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using FluentAssertions;
 namespace SpecFlowUnitTestLab
 {
     [Binding]
@@ -17,7 +17,7 @@ namespace SpecFlowUnitTestLab
             ScenarioContext.Current["products"] = products;
         }
 
-    
+
 
         [When(@"我按下查詢資枓")]
         public void When我按下查詢資枓()
@@ -33,6 +33,7 @@ namespace SpecFlowUnitTestLab
         {
             var actual = ScenarioContext.Current.Get<int>("actual");
             Assert.AreEqual(actual, result);
+            actual.Should().Be(result);
         }
     }
 
